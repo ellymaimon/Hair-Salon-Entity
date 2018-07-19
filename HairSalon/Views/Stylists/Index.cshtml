@@ -1,0 +1,20 @@
+@model IEnumerable<HairSalon.Models.Stylist>
+
+<html>
+<head>
+    <title>Hair Salon</title>
+</head>
+<body>
+    <h2>Hair Salon</h2>
+    <h4>@Html.DisplayNameFor(model => model.Name)</h4>
+    <ul>
+        @foreach(var listStylist in Model)
+        {
+            <li>
+            @Html.DisplayFor(modelStylist => listStylist.Name)
+            @Html.ActionLink("Details", "Details", new { id = listStylist.StylistId })
+            </li>
+        }
+    </ul>
+</body>
+</html>
