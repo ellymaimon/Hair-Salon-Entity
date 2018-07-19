@@ -1,21 +1,35 @@
 @model IEnumerable<HairSalon.Models.Stylist>
 
-<html>
-<head>
-    <title>Hair Salon</title>
-</head>
-<body>
-    <h2>Hair Salon</h2>
-    <h4>@Html.DisplayNameFor(model => model.Name)</h4>
-    <ul>
-        @foreach(var listStylist in Model)
-        {
-            <li>
-            @Html.DisplayFor(modelStylist => listStylist.Name)
-            @Html.ActionLink("Details", "Details", new { id = listStylist.StylistId })
-            </li>
-        }
-    </ul>
-    <p>@Html.ActionLink("Add a new stylist", "Create")</p>
-</body>
-</html>
+<h2>Hair Salon</h2>
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var listStylist in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelStylist => listStylist.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelStylist => listStylist.Client.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = listStylist.StylistId }) |
+                @Html.ActionLink("Details", "Details", new { id = listStylist.StylistId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = listStylist.StylistId })
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
