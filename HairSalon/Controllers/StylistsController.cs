@@ -20,5 +20,18 @@ namespace HairSalon.Controllers
             Stylist thisStylist = db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
             return View(thisStylist);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Stylist stylist)
+        {
+            db.Stylists.Add(stylist);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
